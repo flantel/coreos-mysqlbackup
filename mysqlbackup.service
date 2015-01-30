@@ -1,0 +1,19 @@
+[Unit]
+Description=MySQL Backup
+Requires=docker.service
+ 
+[Service]
+TimeoutStartSec=0
+
+ExecStartPre=-/usr/bin/docker pull barryflanagan/automysqlbackup
+ExecStart=/usr/bin/docker run --rm -v /var/container_data/mysqlbackup/:/var/lib/automysqlbackup  --link revive-mysql:mysql \
+	-e DB_HOST=<mysql host> -e DB_USER=<db_user> -e DB_PASS=<db_pass> -e MAILTO=<who to email logs to> -e MAILFROM=<who the email should come from> \
+	-e SMTP_USER=<Auth for ssmtp> -e SMTP_PASS=<password for ssmtp> \
+	barryflanagan/automysqlbackup
+
+[Install]
+WantedBy=multi-user.target
+ 
+[X-Fleet]
+MachineOf=revive-mysql.service
+
