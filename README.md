@@ -7,5 +7,6 @@ This is designed to run on CoreOS and includes a mysqlbackup.service  unit  and 
 
 It uses ssmtp as a lightweight mailer for any logs and all relevant settings are done either via "-e" environment variables, or through editing the automysqlbackup.default file.
 
+See mysqlbackup.service file for docker command line.
 
 
