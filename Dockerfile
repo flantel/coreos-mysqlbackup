@@ -1,6 +1,6 @@
 FROM debian:wheezy
 ENV DEBIAN_FRONTEND noninteractive
-MAINTAINER  Barry Flanagan <barry@telinsta.com>
+MAINTAINER  Barry Flanagan <barry@flantel.com>
 RUN apt-get update && apt-get -y dist-upgrade && \
 	apt-get -y install automysqlbackup && \
 	apt-get -y install ssmtp && \
